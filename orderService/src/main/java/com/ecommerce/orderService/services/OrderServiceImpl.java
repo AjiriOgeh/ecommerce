@@ -19,6 +19,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.ecommerce.orderService.data.models.OrderStatus.SHIPPED;
@@ -55,6 +56,7 @@ public class OrderServiceImpl implements OrderService{
                 .quantity(createOrderRequest.getQuantity())
                 .totalAmount(product.getPrice().multiply(BigDecimal.valueOf(createOrderRequest.getQuantity())))
                 .status(SHIPPED)
+                .dateCreated(LocalDateTime.now())
                 .build();
 
         orderRepository.save(order);
