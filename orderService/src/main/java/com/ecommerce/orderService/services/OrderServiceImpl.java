@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public CreateOrderResponse createOrder(CreateOrderRequest createOrderRequest) {
         ApiResponse apiResponse = webClientBuilder.build().get()
-                .uri("http://PRODUCTSERVICE//api/v1/products/{id}", createOrderRequest.getProductId())
+                .uri("http://PRODUCTSERVICE/api/v1/products/{id}", createOrderRequest.getProductId())
                 .retrieve()
                 .onStatus(HttpStatusCode::is4xxClientError, response ->
                         Mono.error(new ProductNotFoundException("Product not found"))
