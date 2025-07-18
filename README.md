@@ -23,3 +23,5 @@ How to Run
 2. Run the `apiGateway`
 3. Run the `productService`
 4. Run the `orderService`
+
+`Postman documentation link` - https://documenter.getpostman.com/view/33768573/2sB34kCy3Q
