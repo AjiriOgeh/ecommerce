@@ -32,14 +32,14 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse> updateProduct(@PathVariable Long id,@RequestBody @Valid UpdateProductRequest updateProductRequest) {
+    public ResponseEntity<ApiResponse> updateProduct(@PathVariable("id") Long id,@RequestBody @Valid UpdateProductRequest updateProductRequest) {
         UpdateProductResponse updateProductResponse = productService.updateProduct(id, updateProductRequest);
         return ResponseEntity.status(OK)
                 .body(new ApiResponse(updateProductResponse, true));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse> getProductById(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> getProductById(@PathVariable("id") Long id) {
         GetProductResponse getProductResponse = productService.getProductById(id);
         return ResponseEntity.status(OK)
                 .body(new ApiResponse(getProductResponse, true));

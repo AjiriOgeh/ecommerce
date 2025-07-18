@@ -27,6 +27,12 @@ public class GlobalExceptionHandler {
                 .body(new ApiResponse(exception.getMessage(), false));
     }
 
+    @ExceptionHandler
+    public final ResponseEntity<ApiResponse> handleException(InsufficientProductQuantityException exception) {
+        return ResponseEntity.status(BAD_REQUEST)
+                .body(new ApiResponse(exception.getMessage(), false));
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public final ResponseEntity<ApiResponse> handleException(MethodArgumentNotValidException exception) {
         Map<String, String> errors = new HashMap<>();

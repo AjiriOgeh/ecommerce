@@ -7,6 +7,7 @@ import com.ecommerce.orderService.dtos.requests.CreateOrderRequest;
 import com.ecommerce.orderService.dtos.responses.ApiResponse;
 import com.ecommerce.orderService.dtos.responses.CreateOrderResponse;
 import com.ecommerce.orderService.dtos.responses.GetOrderResponse;
+import com.ecommerce.orderService.exceptions.InsufficientProductQuantityException;
 import com.ecommerce.orderService.exceptions.ProductNotFoundException;
 import com.ecommerce.orderService.mappers.OrderMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,6 +45,10 @@ public class OrderServiceImpl implements OrderService{
 
         Product product = new ObjectMapper()
                 .convertValue(apiResponse.getResponse(), Product.class);
+
+        if (createOrderRequest.getQuantity() > product.getQuantity()) {
+            throw new InsufficientProductQuantityException("Insufficient number of products");
+        }
 
         Order order = Order.builder()
                 .productId(product.getId())

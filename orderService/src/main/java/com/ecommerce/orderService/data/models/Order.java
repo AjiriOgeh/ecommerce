@@ -16,5 +16,5 @@ public class Order {
     private Long quantity;
     private BigDecimal totalAmount;
     private OrderStatus status;
-    private LocalDateTime dateCreated;
+    private LocalDateTime dateCreated = LocalDateTime.now();
 }
