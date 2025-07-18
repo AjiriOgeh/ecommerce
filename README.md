@@ -13,7 +13,7 @@ Stack
 
 
 Services
-- `productService`: Manages product data
+- `productService`: Manages product
 - `orderService`: Handles orders
 - `apiGateway`: Routes requests to services
 - `serviceRegistry`: Eureka service discovery
